@@ -25,11 +25,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.JEKYLL_PAT }}
 
-      - name: Setup git
-        run: git config --global url.https://${{ github.actor }}:${{ secrets.JEKYLL_PAT }}@github.com/.insteadOf  https://github.com
+      - name: Configure Git
+        run: git config --global --add url."https://${{ secrets.JEKYLL_PAT }}@github.com/".insteadOf "https://github.com/"
 
       # - name: Set git credentials
       #   run: |
