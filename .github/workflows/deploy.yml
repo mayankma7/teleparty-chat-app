@@ -43,7 +43,7 @@ jobs:
         run: npm i -g yarn
 
       - name: Authenticate with private NPM package
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: echo -e "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ./.npmrc
 
       - name: Install dependencies
         run: yarn install
