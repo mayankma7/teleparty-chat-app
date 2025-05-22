@@ -30,8 +30,11 @@ jobs:
 
       - name: Set git credentials
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.password "${{ secrets.JEKYLL_PAT }}"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.password "${{ secrets.JEKYLL_PAT }}"
+
+      # git config user.name ""
+      # git config user.password ""
 
       # - uses: pnpm/action-setup@v4
       #   name: Install pnpm
