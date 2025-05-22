@@ -30,7 +30,7 @@ jobs:
 
       - name: Set git credentials
         run: |
-          git config user.name "${GITHUB_ACTOR}"
+          git config user.name "${{ github.actor }}"
           git config user.password "${{ secrets.JEKYLL_PAT }}"
 
       # - uses: pnpm/action-setup@v4
@@ -46,9 +46,6 @@ jobs:
 
       - name: Install yarn
         run: npm i -g yarn
-
-      - name: Authenticate with private NPM package
-        run: echo -e "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ./.npmrc
 
       - name: Install dependencies
         run: yarn install
