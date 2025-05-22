@@ -27,8 +27,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.JEKYLL_PAT }}
+
+      - name: Set git credentials
+        run: git config user.name "${GITHUB_ACTOR}"
+        run: git config user.password "${{ secrets.JEKYLL_PAT }}"
 
       # - uses: pnpm/action-setup@v4
       #   name: Install pnpm
