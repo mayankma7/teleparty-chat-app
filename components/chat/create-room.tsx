@@ -18,6 +18,7 @@ export const CreateChatRoom = ({
 }: CreateChatRoomProps) => {
   return (
     <div
+      {...props}
       className={cn(
         "w-full h-full dark:bg-neutral-900 flex flex-col items-center justify-center",
         className

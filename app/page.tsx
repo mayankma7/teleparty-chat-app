@@ -32,7 +32,7 @@ export default function Home() {
   };
 
   const onSubmit = (data: RoomCodeFormData) => {
-    router.push(`/room/${data.code}`);
+    router.push(`/room?id=${data.code}`);
   };
 
   return (
@@ -57,10 +57,10 @@ export default function Home() {
                   <FormControl>
                     <Input
                       id="roomId"
-                      name="roomId"
                       className="flex-1"
                       placeholder="Enter code"
                       aria-label="Enter existing room code"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />

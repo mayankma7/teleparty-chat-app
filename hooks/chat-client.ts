@@ -13,6 +13,7 @@ import { useUser } from "./user";
 import { SocketMessage } from "teleparty-websocket-lib/lib/SocketMessage";
 import { MemberListSocketMessageData, RoomMembers } from "@/types/members";
 import { TypingPresenceSocketMessageData } from "@/types/presence";
+import { generateDefaultAvatar } from "@/lib/avatar";
 
 export type SessionChatMessageWithId = SessionChatMessage & {
   messageId: string;
@@ -155,9 +156,10 @@ export const useChatClient = (): UseChatClientReturn => {
       if (!client) {
         throw new Error();
       }
+      const $pictureUrl = pictureUrl ?? generateDefaultAvatar(nickname);
       setNickname(nickname);
-      setPictureUrl(pictureUrl);
-      const roomId = await client.createChatRoom(nickname, pictureUrl);
+      setPictureUrl($pictureUrl);
+      const roomId = await client.createChatRoom(nickname, $pictureUrl);
       setActiveRoomId(roomId);
       return roomId;
     },
@@ -169,12 +171,13 @@ export const useChatClient = (): UseChatClientReturn => {
       if (!client) {
         throw new Error();
       }
+      const $pictureUrl = pictureUrl ?? generateDefaultAvatar(nickname);
       setNickname(nickname);
-      setPictureUrl(pictureUrl);
+      setPictureUrl($pictureUrl);
       const messageList = await client.joinChatRoom(
         nickname,
         roomId,
-        pictureUrl
+        $pictureUrl
       );
       setActiveRoomId(roomId);
       setMessages(messageList.messages as SessionChatMessageWithId[]);
