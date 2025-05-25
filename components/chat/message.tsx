@@ -2,9 +2,7 @@
 
 import { SessionChatMessageWithId } from "@/hooks/chat-client";
 import { cn } from "@/lib/utils";
-import { ChatMessage as ChatMessageType } from "@/types/messages";
 import { HTMLAttributes } from "react";
-import Image from "next/image";
 import { formatTimestamp } from "@/lib/messages";
 
 type ChatMessageProps = SessionChatMessageWithId &
@@ -21,7 +19,10 @@ export const ChatMessage = ({
 }: ChatMessageProps) => {
   if (isSystemMessage) {
     return (
-      <div className="bg-blue-200 dark:bg-sky-800 px-4 py-2 rounded-md text-center">
+      <div
+        {...props}
+        className="bg-blue-200 dark:bg-sky-800 px-4 py-2 rounded-md text-center"
+      >
         <span className="font-bold">{userNickname}</span> {body}
       </div>
     );
@@ -29,6 +30,7 @@ export const ChatMessage = ({
 
   return (
     <div
+      {...props}
       className={cn(
         "p-4 flex flex-col gap-1 bg-neutral-800 rounded-lg",
         className

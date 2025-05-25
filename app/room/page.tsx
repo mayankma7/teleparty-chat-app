@@ -8,9 +8,10 @@ import { useUser } from "@/hooks/user";
 import { UserDetailsFormData, userDetailsSchema } from "@/schema/user-details";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { useForm } from "react-hook-form";
 
-export default function ChatRoomPage() {
+function ChatRoomPage() {
   const { activeRoomId, createRoom, joinRoom } = useChatClient();
   const router = useRouter();
   const { nickname } = useUser();
@@ -56,4 +57,12 @@ export default function ChatRoomPage() {
   }
 
   return <ChatRoom />;
+}
+
+export default function ChatRoomPageWithSuspense() {
+  return (
+    <Suspense fallback="Loading">
+      <ChatRoomPage />
+    </Suspense>
+  );
 }

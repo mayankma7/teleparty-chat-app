@@ -1,21 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import { FormEventHandler } from "react";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { useForm } from "react-hook-form";
-import { RoomCodeFormData, roomCodeSchema } from "@/schema/room-code";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { RoomCodeFormData, roomCodeSchema } from "@/schema/room-code";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 export default function Home() {
   const router = useRouter();

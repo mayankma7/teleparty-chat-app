@@ -22,7 +22,7 @@ export const TypingIndicator = () => {
     const firstId = filteredTypingUsers[0];
 
     return [members[firstId], filteredTypingUsers.length];
-  }, [members, typingUsers]);
+  }, [members, typingUsers, userId]);
 
   return (
     <div className="h-10 px-2 py-1">

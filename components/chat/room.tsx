@@ -56,7 +56,7 @@ export const ChatRoom = () => {
     dispatchTypingStatus(true);
 
     return () => dispatchTypingStatus(false);
-  }, [isTyping]);
+  }, [isTyping, dispatchTypingStatus]);
 
   useEffect(() => {
     if (!messageContainerRef.current) {
